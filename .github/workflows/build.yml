@@ -20,7 +20,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    #- run: *setup_steps
+      - name: Check out repository code
+        uses: actions/checkout@v6
+
+      - id: setup
+        uses: ./.github/actions/java_setup_action
     - run: |
         echo "Build Type: $BUILD_TYPE"
         echo "Version: $VERSION"
