@@ -25,19 +25,19 @@ jobs:
 
       - id: setup
         uses: ./.github/actions/java_setup_action
-    - run: |
-        echo "Build Type: $BUILD_TYPE"
-        echo "Version: $VERSION"
-      env:
-        BUILD_TYPE: ${{ inputs.build_type }}
-        VERSION: ${{ inputs.version }}
-    - name: create obj
-      run: mkdir -p ./obj
-    - name: clean obj
-      run: rm -rf ./obj/*
-    - name: compile
-      run: javac --version
-    - name: make jar
-      run: echo "jar creation goes here"
+      - run: |
+          echo "Build Type: $BUILD_TYPE"
+          echo "Version: $VERSION"
+        env:
+          BUILD_TYPE: ${{ inputs.build_type }}
+          VERSION: ${{ inputs.version }}
+      - name: create obj
+        run: mkdir -p ./obj
+      - name: clean obj
+        run: rm -rf ./obj/*
+      - name: compile
+        run: javac --version
+      - name: make jar
+        run: echo "jar creation goes here"
 
 
