@@ -4,6 +4,12 @@ name: Deploy built content to Pages
 on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      doc_dir:
+        description: 'Documentation Directory'
+        default: 'DOX'
+        required: true
+        type: string
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -23,14 +29,15 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-      docdir: ./DOX
+      #doc_dir: ./DOX
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Create clean documentation directory
-        run: mkdir -p ${{docdir}}
-        run: rm -rf ${{docdir}}/*
+        run: |
+          mkdir -p ${{ inputs.doc_dir}}
+          rm -rf ${{inputs.doc_dir}}/*
       - name: Build documentation
         run: ./tools/genDox DOX
       - name: Setup Pages
