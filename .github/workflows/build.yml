@@ -25,6 +25,8 @@ jobs:
 
       - id: setup
         uses: ./.github/actions/java_setup_action
+        with:
+          java_version: 25
       - run: |
           echo "Build Type: $BUILD_TYPE"
           echo "Version: $VERSION"
