@@ -1,33 +1,31 @@
 name: java_setup
-description: Action to checkout repo and setup java
+description: Action to setup java
 
-#inputs:
-#  build_type:
-#    description: 'Build type'
-#    default: 'test'
-#    required: true
-#    type: choice
-#    options:
-#    - test
-#    - release
-#  version:
-#    description: 'Version number'
-#    required: false
-#    type: string
+inputs:
+  java_version:
+    description: 'Java Version'
+    default: '21'
+    required: true
+    type: string
+  java_distribution:
+    description: 'Java Distribution'
+    default: 'temurin'
+    required: true
+    type: string
 
-env:
-  runs:
-    using: 'node24'
-    main: 'main.js'
+#env:
+#  runs:
+#    using: 'node24'
+#    main: 'main.js'
 
 runs:
   using: "composite"
   steps:
-    #- name: Check out repository code
-    #  uses: actions/checkout@v6
-    - name: Set up JDK 21
+    - name: Set up JDK ${{inputs.java_version}}
       uses: actions/setup-java@v4
       with:
-        java-version: '21'
-        distribution: 'temurin'
+        #java-version: '21'
+        #distribution: 'temurin'
+        java-version: '${{inputs.java_version}}'
+        distribution: '${{inputs.java_distribution}}'
         java-package: jdk
