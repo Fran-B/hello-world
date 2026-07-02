@@ -36,10 +36,10 @@ jobs:
         uses: actions/checkout@v4
       - name: Create clean documentation directory
         run: |
-          mkdir -p ${{ inputs.doc_dir}}
+          mkdir -p ${{inputs.doc_dir}}
           rm -rf ${{inputs.doc_dir}}/*
       - name: Build documentation
-        run: ./tools/genDox DOX
+        run: ./tools/genDox.sh ${{inputs.doc_dir}}
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
