@@ -1,5 +1,5 @@
-# Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+# Created from Simple workflow for deploying static content to GitHub Pages
+name: Deploy built content to Pages
 
 on:
   # Allows you to run this workflow manually from the Actions tab
@@ -23,17 +23,23 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+      docdir: ./DOX
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Create clean documentation directory
+        run: mkdir -p ${{docdir}}
+        run: rm -rf ${{docdir}}/*
+      - name: Build documentation
+        run: ./tools/genDox DOX
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          # Upload entire directory
+          path: ${{docdir}}
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
