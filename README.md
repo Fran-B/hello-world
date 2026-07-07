@@ -8,4 +8,6 @@ This is an attempt to link to the test index page from within the README file.
 Normally this would read something like: documentation is in <a href="index.html">index.html</a>.
 However, it seems that only links to the source, rather than actually showing the HTML content.
 
+So youshould be able to find the documentation pages at <a href="https://fran-b.github.io/hello-world/">https://fran-b.github.io/hello-world/</a>
+
 This is where we make our third edit for practice.
