@@ -9,9 +9,17 @@ inputs:
     type: string
   java_distribution:
     description: 'Java Distribution'
-    default: 'temurin'
+    #default: 'temurin'
+    default: 'oracle'
     required: true
-    type: string
+    #type: string
+    type: choice
+    options:
+    - temurin
+    - oracle
+    - zulu
+    - liberica
+    - corretto
 
 #env:
 #  runs:
