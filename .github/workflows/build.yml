@@ -17,6 +17,10 @@ on:
         required: false
         type: string
 
+env:
+  GEN_CODE_DIR: ./obj
+  GEN_DOC_DIR: ./DOX
+
 jobs:
   build:
     runs-on: ubuntu-latest
